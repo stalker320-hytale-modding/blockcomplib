@@ -42,10 +42,17 @@ class MyBlockComponent extends BlockComponent {
 		= BuilderCodec.builder(MyBlockComponent.class, MyBlockComponent::new).build();
 
 	public static HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
-	private float time = 0.0;
+	private float time = 0.0f;
 
 	public static ComponentType<ChunkType, MyBlockComponent> getComponentType() {
 		return MyPlugin.getInstance().getMyBlockComponentType();
+	}
+
+	public float getTime() {
+		return this.time;
+	}
+	public void setTime(float value) {
+		this.time = value;
 	}
 
 	public MyBlockComponent(float t) {
@@ -86,11 +93,12 @@ public class MyBlockSystem extends BlockTickingSystem {
 
 	@Override
 	public void tick(int x, int y, int z, float delta, World world) {
-		LOGGER.atInfo().log("MyBlockSystem at: (x: " + x + ", y: " + y + ", z: " + z + ") dt: " + delta);
 		world.execute(() -> {
 			Holder<ChunkStore> blockData = world.getBlockComponentHolder(x, y, z);
 			assert blockData != null;
 			MyBlockComponent component = blockData.getComponent(MyBlockComponent.getComponentType());
+			component.setTime(component.getTime() + delta);
+			LOGGER.atInfo().log("MyBlockSystem at: (x: " + x + ", y: " + y + ", z: " + z + ") time: " + component.getTime());
 		});
 	}
 
@@ -154,7 +162,7 @@ public class MyPlugin extends JavaPlugin {
 }
 ```
 
-Usage at json file (Used from my another project):
+Usage at json file:
 
 ```json
 {
@@ -163,10 +171,9 @@ Usage at json file (Used from my another project):
   	"...": "...",
     "BlockEntity": {
       "Components": {
-        "SpinComponent": {
-          "__comment": "Here!!!"
-          "velocity": 0.25
-        }
+		"...": {},
+        "MyBlockComponent": { "__comment": "Here!!!" },
+		"...": {}
       }
     },
 	"...": "..."
