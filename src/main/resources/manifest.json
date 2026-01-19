@@ -1,5 +1,5 @@
 {
-  "Group": "usr.stalker320.blockcomplib",
+  "Group": "stalker320",
   "Name": "BlockCompLib",
   "Description": "Library, that adds abstract components for BlockEntities modification. Check website to further documentation",
   "Version": "1.0.0",
