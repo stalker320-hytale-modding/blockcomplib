@@ -4,14 +4,22 @@ Library for block components definitions.
 
 # Build
 
+## Gradlew
+
 Just run
 
 ```sh
 ./gradlew build
 ```
+At project directory and copy `build/libs/<pluginname>-<pluginversion>.jar` to your `Saves/<savename>/mods` or `Server/mods` folder.
 
-And copy `build/libs/<pluginname>-1.0-SNAPSHOT.jar` to your `Saves/<savename>/mods` or `Server/mods` folder.
+## Prebuilt binaries
 
+Download links:
+
+Version | Link
+------|-----
+1.0.0 | -
 # Usage
 
 Create new block component
@@ -25,35 +33,30 @@ import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 
 class MyBlockComponent extends BlockComponent {
- 	public static HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+	// Or specify fields using `.append(...).add()` before `.build()`
+	public static final BuilderCodec<MyBlockComponent> CODEC
+	= BuilderCodec.builder(MyBlockComponent.class, MyBlockComponent::new).build();
+
+	public static HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
 	private float time = 0.0;
-  public MyBlockComponent(float t) {
-    this.time = t;
-  }
-  public MyBlockComponent() {
-    this(0.0f);
-  }
-  
-  @Override
-  public void run(int x, int y, int z, float delta, World world) {
-    LOGGER.atInfo(
-      "MyBlockComponent at v3(" +
-        "x: " + x +
-        ", y: " + y +
-        ", z: " + z +
-      ")" + this.time
-    ); // Just print position every tick.
-    this.time += delta; // For block-changing use `world.execute(() -> {});`
-  }
+
+	public MyBlockComponent(float t) {
+		this.time = t;
+	}
+	public MyBlockComponent() {
+		this(0.0f);
+	}
+	@Override
+	public void run(int x, int y, int z, float delta, World world) {
+		LOGGER.atInfo("MyBlockComponent at v3(x: " + x + ", y: " + y + ", z: " + z + ") time:" + this.time);
+		// Just print position every tick.
+		this.time += delta; // For block-changing use `world.execute(() -> {});`
+	}
 	@NullableDecl
 	@Override
 	public abstract BlockComponent clone() {
-    return new BlockComponent(this.time);
-  }
-  static {
-    // Or specify fields using `.append(...).add()` before `.build()`
-    CODEC = BuilderCodec.builder(MyBlockComponent.class, MyBlockComponent::new).build();
-  }
+		return new BlockComponent(this.time);
+	}
 }
 ```
 
@@ -85,11 +88,11 @@ public class MyPlugin extends JavaPlugin {
 		super.setup();
 		LOGGER.at(Level.INFO).log("Plugin is setting up...");
 
-    this.spinComponentType = this.getChunkStoreRegistry()
+    	this.spinComponentType = this.getChunkStoreRegistry()
 				.registerComponent(MyBlockComponent.class, /*Name of field in your json file*/ "MyBlockComponent", MyBlockComponent.CODEC);
-    myBlockSystem = new BlockTickingSystem<MyBlockComponent>(this.myBlockComponentType);
-    this.getChunkStoreRegistry().registerSystem(myBlockSystem);
-    // Yeah, no need to inherit a BlockTickingSystem, logics moved to BlockComponent, but I recommend to save system to variable
+	    myBlockSystem = new BlockTickingSystem<MyBlockComponent>(this.myBlockComponentType);
+	    this.getChunkStoreRegistry().registerSystem(myBlockSystem);
+	    // Yeah, no need to inherit a BlockTickingSystem, logics moved to BlockComponent, but I recommend to save system to variable
 		LOGGER.at(Level.INFO).log("Plugin setted up");
 	}
 

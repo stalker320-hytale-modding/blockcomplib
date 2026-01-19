@@ -7,8 +7,6 @@ import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 public abstract class BlockComponent implements Component<ChunkStore> {
-	public BuilderCodec<? extends Component<ChunkStore>> CODEC;
-
 	public abstract void run(
 		int x, int y, int z,
 		@Cancellable float delta,
