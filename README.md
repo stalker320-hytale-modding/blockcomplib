@@ -17,10 +17,10 @@ At project directory and copy `build/libs/<pluginname>-<pluginversion>.jar` to y
 
 Download links:
 
-Version | Link | Game version
+Version | Link | Server version
 ------|-----|----
 1.0.0 | https://github.com/stalker320-hytale-modding/blockcomplib/releases/download/v1.0.0/BlockCompLib-1.0.0.jar | 2026.01.17-4b0f30090
-
+1.1.0 | - | 2026.01.17-4b0f30090
 # Usage
 
 Create new block component
