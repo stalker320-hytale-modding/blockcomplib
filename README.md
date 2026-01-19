@@ -63,7 +63,7 @@ class MyBlockComponent extends BlockComponent {
 ```
 
 Add system:
-```
+```java
 package com.example.systems;
 
 import com.hypixel.hytale.component.Holder;
