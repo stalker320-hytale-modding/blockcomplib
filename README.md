@@ -57,7 +57,7 @@ class MyBlockComponent extends BlockComponent {
 }
 ```
 
-Add at plugin
+Add it at main plugin file:
 
 ```java
 package com.example;
