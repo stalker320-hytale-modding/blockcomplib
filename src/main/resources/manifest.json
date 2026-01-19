@@ -2,7 +2,7 @@
   "Group": "Stalker320",
   "Name": "BlockCompLib",
   "Description": "Library, that adds abstract components for BlockEntities modification. Check website to further documentation",
-  "Version": "1.0.1",
+  "Version": "1.1.0",
   "Authors": [
     {
       "Name": "Stalker320",
