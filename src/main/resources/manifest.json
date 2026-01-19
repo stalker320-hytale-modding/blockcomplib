@@ -1,11 +1,11 @@
 {
-  "Group": "stalker320",
+  "Group": "Stalker320",
   "Name": "BlockCompLib",
   "Description": "Library, that adds abstract components for BlockEntities modification. Check website to further documentation",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Authors": [
     {
-      "Name": "stalker320",
+      "Name": "Stalker320",
       "Email": "stalker3204@yandex.com",
       "Url": "https://github.com/stalker320-hytale-modding"
     }

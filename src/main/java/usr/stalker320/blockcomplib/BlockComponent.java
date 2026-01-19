@@ -7,12 +7,6 @@ import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 public abstract class BlockComponent implements Component<ChunkStore> {
-	public abstract void run(
-		int x, int y, int z,
-		@Cancellable float delta,
-		World world
-	);
-
 	@NullableDecl
 	@Override
 	public abstract BlockComponent clone();
