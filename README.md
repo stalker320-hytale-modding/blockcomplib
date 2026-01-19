@@ -55,8 +55,8 @@ class MyBlockComponent extends BlockComponent {
 	}
 	@NullableDecl
 	@Override
-	public abstract BlockComponent clone() {
-		return new BlockComponent(this.time);
+	public BlockComponent clone() {
+		return new MyBlockComponent(this.time);
 	}
 }
 ```
