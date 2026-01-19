@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group = 'com.template'
-version = '1.0-SNAPSHOT'
+group = 'usr.stalker320.blockcomplib'
+version = '1.0'
 
 repositories {
     mavenCentral()

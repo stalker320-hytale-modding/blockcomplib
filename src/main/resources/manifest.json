@@ -1,6 +1,15 @@
 {
-  "Group": "com.template",
-  "Name": "TemplatePlugin",
+  "Group": "usr.stalker320.blockcomplib",
+  "Name": "BlockCompLib",
+  "Description": "Library, that adds abstract components for BlockEntities modification. Check website to further documentation",
   "Version": "1.0.0",
-  "Main": "com.template.TemplatePlugin"
+  "Authors": [
+    {
+      "Name": "stalker320",
+      "Email": "stalker3204@yandex.com",
+      "Url": "https://github.com/stalker320-hytale-modding"
+    }
+  ],
+  "Website": "https://github.com/stalker320-hytale-modding/blockcomplib",
+  "Main": "usr.stalker320.blockcomplib.BlockCompLib"
 }
