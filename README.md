@@ -120,7 +120,7 @@ import com.example.components.MyBlockComponent;
 import com.example.systems.MyBlockSystem;
 
 // usr.stalker320.blockcomplib dependency
-import usr.stalker320.blockcomplib.BlockTickingSystem;
+import usr.stalker320.blockcomplib.BlockSystem;
 
 // Hytale dependency
 import com.hypixel.hytale.component.ComponentType;

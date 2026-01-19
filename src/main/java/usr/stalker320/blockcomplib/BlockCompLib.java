@@ -13,5 +13,7 @@ public class BlockCompLib extends JavaPlugin {
 	@Override
 	protected void setup() {
 		super.setup();
+		this.getChunkStoreRegistry()
+			.registerSystem(new BlockSystem());
 	}
 }
